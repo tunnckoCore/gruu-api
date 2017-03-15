@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/tunnckocore/gruu-api/compare/v0.2.1...v0.2.2) (2017-03-15)
+
+
+### Bug Fixes
+
+* **example:** tweak - pass options to stacktrace-metadata ([9941def](https://github.com/tunnckocore/gruu-api/commit/9941def))
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/tunnckocore/gruu-api/compare/v0.2.0...v0.2.1) (2017-03-15)
 
