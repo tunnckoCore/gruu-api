@@ -10,10 +10,10 @@
 'use strict'
 
 var test = require('mukla')
-var gruuApi = require('./dist/gruu.common')
+var Gruu = require('./dist/gruu.common')
 var Bluebird = require('bluebird')
 
 test('gruu-api', function (done) {
-  gruuApi({ Promise: Bluebird })
+  Gruu({ Promise: Bluebird })
   done()
 })

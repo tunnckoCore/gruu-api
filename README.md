@@ -48,7 +48,7 @@ const gruuApi = require('gruu-api')
 
 ## API
 
-### [Gruu](src/index.js#L109)
+### [Gruu](src/index.js#L111)
 > Initialize `Gruu` constructor with optional `options` object. Basically it is just [dush][] which is simple event emitter system and has `.on`, `.off`, `.once`, `.emit` and `.use` methods. In addition the runner adds `.define`, `.delegate`, `.add` and `.run` methods. Use `.add` to define new test and `.run` to start the suite. One more cool thing is that it emit life-cycle events - `start`, `beforeEach`, `pass`, `fail`, `afterEach` and `finish`. So for example if test fail it will emit `fail`, `beforeEach` and `afterEach` events which you can listen with `.on('fail', fn)`. By default `gruu-api` _does not_ comes with included reporter, so you can give listener to each event manually or pass `options.reporter` which is the same thing as plugin - a function that is called immediatelly with `(app)` signature.
 
 _All `options` are also passed to [redolent][] and [each-promise][].
@@ -100,10 +100,13 @@ app.use((app) => {
     console.log('not ok', index, '-', title)
 
     const err = metadata(reason)
-    console.log(err.at)
-    console.log(err.line)
-    console.log(err.place)
-    console.log(err.column)
+    delete err.generatedMessage
+
+    // TAP-ish YAML-ish output
+    let json = JSON.stringify(err, null, 2)
+    json = json.replace(/^\{/, '  ---')
+    json = json.replace(/\}$/, '  ...')
+    console.log(json)
 
     // or the whole stack
     // console.log(err.stack)

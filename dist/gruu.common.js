@@ -386,10 +386,13 @@ var plugins = {
  *     console.log('not ok', index, '-', title)
  *
  *     const err = metadata(reason)
- *     console.log(err.at)
- *     console.log(err.line)
- *     console.log(err.place)
- *     console.log(err.column)
+ *     delete err.generatedMessage
+ *
+ *     // TAP-ish YAML-ish output
+ *     let json = JSON.stringify(err, null, 2)
+ *     json = json.replace(/^\{/, '  ---')
+ *     json = json.replace(/\}$/, '  ...')
+ *     console.log(json)
  *
  *     // or the whole stack
  *     // console.log(err.stack)
@@ -411,7 +414,6 @@ var plugins = {
  *     }
  *   })
  * })
- *
  *
  * // START DEFINED TEST SUITE
  * app.run().then(
