@@ -1,6 +1,6 @@
 {
   "name": "gruu-api",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Core API for Gruu and Mukla - Minimal, modern and extensible test runners",
   "repository": "tunnckoCore/gruu-api",
   "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
