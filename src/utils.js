@@ -15,8 +15,6 @@ const utils = {}
 utils.promisify = redolent
 utils.extend = extendShallow
 
-utils.pluginName = (filepath) => filepath.slice(0, filepath.length - 3)
-
 utils.define = (obj, prop, val) => Object.defineProperty(obj, prop, {
   configurable: true,
   enumerable: false,

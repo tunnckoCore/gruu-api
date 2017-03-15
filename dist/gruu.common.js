@@ -21,8 +21,6 @@ var utils = {};
 utils.promisify = redolent;
 utils.extend = extendShallow;
 
-utils.pluginName = function (filepath) { return filepath.slice(0, filepath.length - 3); };
-
 utils.define = function (obj, prop, val) { return Object.defineProperty(obj, prop, {
   configurable: true,
   enumerable: false,

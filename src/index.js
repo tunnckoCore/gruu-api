@@ -8,7 +8,7 @@
 'use strict'
 
 import dush from 'dush'
-import plugin from './lib/plugins/index.js'
+import plugin from './plugins/index.js'
 
 export default function Gruu (options) {
   const app = dush()

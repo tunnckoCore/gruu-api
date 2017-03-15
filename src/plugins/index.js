@@ -27,10 +27,10 @@ const plugins = {
  * Like this:
  * {
  *   // lib/plugins/loadMainMethods.js
- *   loadMainMethods: function loadMainMethods () {}
+ *   mainMethods: function mainMethods () {}
  *
  *   // lib/plugins/loadCoreMethods.js
- *   loadCoreMethods: function loadCoreMethods () {}
+ *   coreMethods: function coreMethods () {}
  *
  *   // lib/plugins/loadDefaults.js
  *   loadDefaults: function loadDefaults () {}
