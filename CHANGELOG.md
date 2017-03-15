@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.3"></a>
+## [0.2.3](https://github.com/tunnckocore/gruu-api/compare/v0.2.2...v0.2.3) (2017-03-15)
+
+
+### Bug Fixes
+
+* **cleanup:** remove wrapHandlers plugin since it not work okey ([bc4109d](https://github.com/tunnckocore/gruu-api/commit/bc4109d))
+
+
+
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/tunnckocore/gruu-api/compare/v0.2.1...v0.2.2) (2017-03-15)
 
