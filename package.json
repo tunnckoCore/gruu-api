@@ -1,0 +1,79 @@
+{
+  "name": "gruu-api",
+  "version": "0.1.4",
+  "description": "Core API for Gruu and Mukla - Minimal, modern and extensible test runners",
+  "repository": "tunnckoCore/gruu-api",
+  "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
+  "precommit.silent": true,
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "standard index.js test.js lib/utils.js lib/**/*.js --fix --verbose",
+    "test": "npm-run-all -s lint test:*",
+    "test:api": "nyc --reporter lcov node test.js",
+    "test:report": "nyc report",
+    "prerelease": "npm test",
+    "release": "standard-version --sign --no-verify",
+    "git": "npm-run-all -s git:*",
+    "git:add": "git add --all",
+    "git:cz": "git-cz",
+    "commit": "npm-run-all -s test git"
+  },
+  "dependencies": {
+    "dush": "^2.1.1",
+    "each-promise": "^1.0.4",
+    "extend-shallow": "^2.0.1",
+    "get-fn-name": "^1.0.0",
+    "redolent": "^2.0.1"
+  },
+  "devDependencies": {
+    "commitizen": "~2.7.0",
+    "cz-conventional-changelog": "1.1.5",
+    "mukla": "^0.4.8",
+    "npm-run-all": "~3.1.2",
+    "nyc": "^10.1.2",
+    "pre-commit": "^1.2.2",
+    "standard": "^9.0.0",
+    "standard-version": "^4.0.0"
+  },
+  "files": [
+    "index.js",
+    "lib/"
+  ],
+  "keywords": [],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "verb": {
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 3
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "related": {
+      "list": [
+        "always-done",
+        "minibase",
+        "try-catch-core"
+      ],
+      "highlight": "always-done"
+    },
+    "lint": {
+      "reflinks": true
+    }
+  },
+  "nyc": {
+    "check-coverage": true,
+    "statements": 0,
+    "functions": 0,
+    "branches": 0,
+    "lines": 0
+  }
+}
