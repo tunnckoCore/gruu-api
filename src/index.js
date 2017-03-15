@@ -52,6 +52,9 @@ import plugin from './plugins/index.js'
  *
  * // CUSTOM TAP REPORTER, built as plugin
  * app.use((app) => {
+ *   // makes error object enhanced
+ *   const metadata = require('stacktrace-metadata')
+ *
  *   app.once('start', (app) => {
  *     console.log('TAP version 13')
  *   })
@@ -59,9 +62,11 @@ import plugin from './plugins/index.js'
  *     console.log('# :)', test.title)
  *     console.log('ok', test.index, '-', test.title)
  *   })
- *   app.on('fail', (app, { title, index, reason: err }) => {
- *     console.log('# :(', test.title)
- *     console.log('not ok')
+ *   app.on('fail', (app, { title, index, reason }) => {
+ *     console.log('# :(', title)
+ *     console.log('not ok', index, '-', title)
+ *
+ *     const err = metadata(reason)
  *     console.log(err.at)
  *     console.log(err.line)
  *     console.log(err.place)
@@ -106,7 +111,7 @@ export default function Gruu (options) {
 
   app.use(plugin.mainMethods())
   app.use(plugin.loadDefaults(options))
-  app.use(plugin.wrapHandlers())
+  // app.use(plugin.wrapHandlers())
   app.use(plugin.coreMethods())
 
   return app
