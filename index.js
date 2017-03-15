@@ -7,16 +7,16 @@
 
 'use strict'
 
-var dush = require('dush')
-var plugin = require('./lib/plugins')
+import dush from 'dush'
+import plugin from './lib/plugins/index.js'
 
-module.exports = function Gruu (options) {
-  var app = dush()
+export default function Gruu (options) {
+  const app = dush()
 
-  app.use(plugin.loadMainMethods())
+  app.use(plugin.mainMethods())
   app.use(plugin.loadDefaults(options))
-  app.use(plugin.loadListeners())
-  app.use(plugin.loadCoreMethods())
+  app.use(plugin.wrapHandlers())
+  app.use(plugin.coreMethods())
 
   return app
 }

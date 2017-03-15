@@ -5,7 +5,9 @@
   "repository": "tunnckoCore/gruu-api",
   "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
   "precommit.silent": true,
-  "main": "index.js",
+  "jsnext:main": "index.js",
+  "module": "index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
     "lint": "standard index.js test.js lib/utils.js lib/**/*.js --fix --verbose",
@@ -17,7 +19,11 @@
     "git": "npm-run-all -s git:*",
     "git:add": "git add --all",
     "git:cz": "git-cz",
-    "commit": "npm-run-all -s test git"
+    "commit": "npm-run-all -s build test git",
+    "build": "npm-run-all -s build:*",
+    "build:clean": "rimraf dist",
+    "build:bundle": "rollup -c",
+    "build:show": "ls -al dist"
   },
   "dependencies": {
     "dush": "^2.1.1",
@@ -27,18 +33,23 @@
     "redolent": "^2.0.1"
   },
   "devDependencies": {
+    "bluebird": "^3.5.0",
     "commitizen": "~2.7.0",
     "cz-conventional-changelog": "1.1.5",
     "mukla": "^0.4.8",
     "npm-run-all": "~3.1.2",
     "nyc": "^10.1.2",
     "pre-commit": "^1.2.2",
+    "rimraf": "^2.6.1",
+    "rollup": "^0.41.5",
+    "rollup-plugin-buble": "^0.15.0",
     "standard": "^9.0.0",
     "standard-version": "^4.0.0"
   },
   "files": [
     "index.js",
-    "lib/"
+    "lib/",
+    "dist/"
   ],
   "keywords": [],
   "config": {

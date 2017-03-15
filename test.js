@@ -9,10 +9,11 @@
 
 'use strict'
 
-const test = require('mukla')
-const gruuApi = require('./index')
+var test = require('mukla')
+var gruuApi = require('./dist/index')
+var Bluebird = require('bluebird')
 
-test('gruu-api', (done) => {
-  gruuApi()
+test('gruu-api', function (done) {
+  gruuApi({ Promise: Bluebird })
   done()
 })
