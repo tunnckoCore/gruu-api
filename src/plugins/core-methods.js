@@ -10,7 +10,6 @@
 import utils from '../utils.js'
 import flow from 'each-promise'
 import getName from 'get-fn-name'
-import defaultReporter from './reporter.js'
 
 export default function coreMethods () {
   return function coreMethods_ (app) {
@@ -71,7 +70,7 @@ export default function coreMethods () {
 
       const reporter = typeof app.options.reporter === 'function'
         ? app.options.reporter
-        : defaultReporter()
+        : function noopPlugin () {}
 
       app.use(reporter)
 

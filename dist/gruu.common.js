@@ -57,21 +57,6 @@ function mainMethods () {
  * Released under the MIT license.
  */
 
-// var utils = require('../utils.js')
-
-function defaultTapReporter () {
-  return function defaultReporter (app) {
-
-  }
-}
-
-/*!
- * gruu-api <https://github.com/tunnckoCore/gruu-api>
- *
- * Copyright (c) Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)
- * Released under the MIT license.
- */
-
 function coreMethods () {
   return function coreMethods_ (app) {
     /**
@@ -131,7 +116,7 @@ function coreMethods () {
 
       var reporter = typeof app.options.reporter === 'function'
         ? app.options.reporter
-        : defaultTapReporter();
+        : function noopPlugin () {};
 
       app.use(reporter);
 
