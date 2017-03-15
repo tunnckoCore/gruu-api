@@ -99,7 +99,7 @@ app.use((app) => {
     console.log('# :(', title)
     console.log('not ok', index, '-', title)
 
-    const err = metadata(reason)
+    const err = metadata(reason, app.options)
     delete err.generatedMessage
 
     // TAP-ish YAML-ish output
