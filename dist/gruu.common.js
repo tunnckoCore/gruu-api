@@ -223,54 +223,6 @@ var reflect = function (item) { return (item.reason ? {
  * Released under the MIT license.
  */
 
-function wrapHandlers () {
-  return function wrapHookHandlers_ (app) {
-    app.delegate({
-      on: handlerFactory(app, 'on'),
-      off: handlerFactory(app, 'off'),
-      once: handlerFactory(app, 'once')
-    });
-
-    return app
-  }
-}
-
-/**
- * Utilities / Helpers
- */
-
-function handlerFactory (app, methodName) {
-  return function type_ (name, handler) {
-    var fn = name === 'error'
-      ? errorHandler
-      : nonErrorHandler(app, methodName, handler);
-
-    app[methodName](name, fn);
-  }
-}
-
-function nonErrorHandler (app, methodName, handler) {
-  return function handler_ (a, b, c, d) {
-    var fn = utils.promisify(handler, app.options);
-
-    fn(a, b, c, d).catch(function hookHandlerFails_ (err) {
-      err.method = methodName;
-      app.emit('error', err);
-    });
-  }
-}
-
-function errorHandler (err) {
-  throw err
-}
-
-/*!
- * gruu-api <https://github.com/tunnckoCore/gruu-api>
- *
- * Copyright (c) Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)
- * Released under the MIT license.
- */
-
 function loadOptions (config) {
   return function loadOptions_ (app) {
     app.options = utils.extend({
@@ -318,7 +270,6 @@ function loadDefaults (config) {
 var plugins = {
   mainMethods: mainMethods,
   loadDefaults: loadDefaults,
-  wrapHandlers: wrapHandlers,
   coreMethods: coreMethods
 };
 
@@ -432,7 +383,6 @@ function Gruu (options) {
 
   app.use(plugins.mainMethods());
   app.use(plugins.loadDefaults(options));
-  // app.use(plugin.wrapHandlers())
   app.use(plugins.coreMethods());
 
   return app

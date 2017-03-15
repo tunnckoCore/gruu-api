@@ -9,13 +9,11 @@
 
 import mainMethods from './main-methods.js'
 import coreMethods from './core-methods.js'
-import wrapHandlers from './wrap-handlers.js'
 import loadDefaults from './load-defaults.js'
 
 const plugins = {
   mainMethods,
   loadDefaults,
-  wrapHandlers,
   coreMethods
 }
 

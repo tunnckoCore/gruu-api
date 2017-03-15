@@ -113,7 +113,6 @@ export default function Gruu (options) {
 
   app.use(plugin.mainMethods())
   app.use(plugin.loadDefaults(options))
-  // app.use(plugin.wrapHandlers())
   app.use(plugin.coreMethods())
 
   return app
